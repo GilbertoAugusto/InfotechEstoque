@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
  * By Giba 
  * è noiz.. :):):):):):)
  * 
+ * 
  */
 public class conn {
 
@@ -38,7 +39,7 @@ public class conn {
    private static String ip  ="127.0.0.1"    ;
    private static String usuario="infotech" ;
    private static String senha ="123456" ;
-   private static String database ="InfoTech" ;
+   private static String database ="InfoTech_estoque" ;
    private static String porta="1433" ; 
 
    private static  String stringConnection= "jdbc:sqlserver://"+ip+":"+porta+";datbasename= "+database+";" ;

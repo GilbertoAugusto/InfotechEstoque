@@ -1,4 +1,4 @@
-use master;
+﻿use master;
  go
 create  procedure check_database
 as

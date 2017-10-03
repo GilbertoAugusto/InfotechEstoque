@@ -2,6 +2,8 @@
 package br.com.infotech.FORMS_PRINCIPAIS;
 
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,12 +18,17 @@ public class login extends javax.swing.JFrame {
     public login() {
         
         initComponents();
-       
+        centralizarComponente();       
         lblErro.setVisible(false);
     }
-
     
-    
+    public void centralizarComponente() {
+        
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation((ds.width - dw.width) /2, (ds.height - dw.height) /3);
+    }
+       
     private  void login(){
         int autorizacao= 0;
         String usuario = txtUsuarioo.getText();
@@ -36,14 +43,14 @@ public class login extends javax.swing.JFrame {
          ResultSet rsAcces =   br.com.infotech.FUNCTION.acesso.acesso(id);
          while ( rsAcces.next() )
                           {
-                         autorizacao = rsAcces.getInt("autorizacaoDeAcesso");
+                         autorizacao = rsAcces.getInt("autorizacao");
          }
             
          if(autorizacao == 1  ){
          inicioFr novo = new inicioFr(id);
          
          novo.setVisible(true);
-         dispose();    
+         this.dispose();    
          }
          else{
          JOptionPane.showMessageDialog(null,"Houve um erro, você não tem autorização de acesso,\n contate o administrador para detalhes\n 12568"); 
@@ -59,12 +66,8 @@ public class login extends javax.swing.JFrame {
         
      }    
     
-    }
-    
-    
-    
-    
-    
+    }    
+        
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -85,13 +88,11 @@ public class login extends javax.swing.JFrame {
         lblErro = new javax.swing.JLabel();
 
         setTitle("Login - Acesso");
-        setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setFocusTraversalPolicyProvider(true);
         setForeground(java.awt.Color.black);
-        setLocationByPlatform(true);
         setName("frmLogin"); // NOI18N
         setUndecorated(true);
+        setResizable(false);
 
         jPanel6.setBackground(java.awt.SystemColor.controlShadow);
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -118,6 +119,11 @@ public class login extends javax.swing.JFrame {
         btnEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEntrarMouseClicked(evt);
+            }
+        });
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
             }
         });
         btnEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -255,7 +261,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
-       login(); 
+           login(); 
     }//GEN-LAST:event_btnEntrarMouseClicked
 
     private void btnEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEntrarKeyPressed
@@ -270,9 +276,11 @@ public class login extends javax.swing.JFrame {
    }
     }//GEN-LAST:event_jPanel7KeyPressed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+
+
+    }//GEN-LAST:event_btnEntrarActionPerformed
+
     public static void main(String args[]) {
       
         try {

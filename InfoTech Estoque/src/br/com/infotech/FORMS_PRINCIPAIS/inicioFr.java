@@ -81,8 +81,6 @@ public class inicioFr extends javax.swing.JFrame {
       parametro = autenticadorAcesso.acesso(valor);
       btnFuncInativos.setVisible(parametro);
       
-      valor = 0;
-      valor = rsValores.getInt("autorizacaoDeAcesso");
       
       valor = 0;
       valor = rsValores.getInt("adiministracao");
@@ -101,7 +99,7 @@ public class inicioFr extends javax.swing.JFrame {
       
     
       valor = 0 ;
-      valor = rsValores.getInt("funcionario");
+      valor = rsValores.getInt("funcionarios");
       parametro = autenticadorAcesso.acesso(valor);
       btnfuncionarios.enable(parametro);
         

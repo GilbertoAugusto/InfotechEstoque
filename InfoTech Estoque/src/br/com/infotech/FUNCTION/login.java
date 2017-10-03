@@ -22,7 +22,7 @@ public class login {
     
     public static Boolean logar(String Usuarios, String Senha) {
     
-    String query = "use infotech ; select * from Usuario where userLogin ='"+Usuarios+"' and senha ='"+Senha+"';";
+    String query = "use InfoTech_estoque ; select * from funcionario where Usuario ='"+Usuarios+"' and senha ='"+Senha+"';";
 
 try{
         Connection conn=    br.com.infotech.CONNECTION.conn.obterConexão();
@@ -43,7 +43,7 @@ try{
             }   
         }            
         catch(SQLException error){
-                 JOptionPane.showMessageDialog(null,"Ocorreu Um Erro Na Conexao\n"+error.getLocalizedMessage()+" \n" +error.getSQLState()+"\n "+error.getMessage()+"\n \n "+error);
+                 JOptionPane.showMessageDialog(null,"Ocorreu Um Erro Na Conexao: 195401\n"+error.getLocalizedMessage()+" \n" +error.getSQLState()+"\n "+error.getMessage()+"\n \n "+error);
                  
         return false;
                 }        

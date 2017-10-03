@@ -22,7 +22,7 @@ public class acesso {
    public static  ResultSet acesso(int user){
                 ResultSet retorno;
 
-                 String query = "use infotech ; select * from  nivelAcesso where usuario ="+user+";";
+                 String query = "use InfoTech_estoque ; select * from  nivel_Acesso where funcionario ="+user+";";
           try{
                   Connection conn=    br.com.infotech.CONNECTION.conn.obterConexão();
 
@@ -50,7 +50,7 @@ public class acesso {
    //retorna true ou false se o usuario existe ou nao, evita acesso indevidos
    public static  boolean configAcesso(String valor){
    int id=0;
-    String query = "use infotech ;select idUsuario from  Usuario where userLogin ='"+valor+"';";
+    String query = "use InfoTech_estoque ;select id_usuario from  funcionario where Usuario ='"+valor+"';";
           try{
                   Connection conn=    br.com.infotech.CONNECTION.conn.obterConexão();
 
@@ -58,7 +58,7 @@ public class acesso {
                   ResultSet rs = stmt.executeQuery(query);
                         while ( rs.next() )
                           {
-                        id = rs.getInt("idUsuario");
+                        id = rs.getInt("id_usuario");
                             }
               if(id != 0){
                   
@@ -84,7 +84,7 @@ public class acesso {
    //retorna id do usuario caos ele exista, para selecionar os acessos
    public static int getId(String valor){
    int id=0;
-    String query = "use infotech ; select idUsuario from  Usuario where userLogin ='"+valor+"';";
+    String query = "use InfoTech_estoque  ; select id_Usuario from  funcionario where usuario ='"+valor+"';";
           try{
                   Connection conn=    br.com.infotech.CONNECTION.conn.obterConexão();
 
@@ -92,7 +92,7 @@ public class acesso {
                   ResultSet rs = stmt.executeQuery(query);
                         while ( rs.next() )
                           {
-                        id = rs.getInt("idUsuario");
+                        id = rs.getInt("id_Usuario");
                             }
               if(id != 0){
                   
@@ -114,8 +114,5 @@ public class acesso {
    
    
    }
-    
-    
-   
    
 }
