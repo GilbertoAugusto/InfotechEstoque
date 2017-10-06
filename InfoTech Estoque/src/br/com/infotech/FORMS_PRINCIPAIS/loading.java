@@ -87,7 +87,8 @@ public class loading extends javax.swing.JFrame {
         
   private static String cretate_tables(){
         String queryCreateTable;
-        return queryCreateTable ="				create procedure create_tables  " +
+        return queryCreateTable ="	"
+                                + "			create procedure create_tables  " +
 "				as  " +
 "				begin  " +
 "  " +
@@ -280,12 +281,16 @@ public class loading extends javax.swing.JFrame {
 "  " +
 "				sexo numeric(1) references sexo(id_sexo),  " +
 "  " +
-"				setor int references setor_funcionario(id_setor)  " +
-"  " +
+"				setor int references setor_funcionario(id_setor),  " +
+"  " +                          
+                                "telefone varchar(20) ,"+
+                                "celular  varchar(20) ,"+
+                                "bairro   varchar(100) ,"+
+                                "complemento varchar(100)"+
 "  " +
 "				)   " +
 "  " +
-"   " +
+"  " +
 "  " +
 "				create table parceiro(  " +
 "  " +
@@ -539,7 +544,7 @@ public class loading extends javax.swing.JFrame {
   
   }     
   
-  private  void preparingSql(){
+  private void preparingSql(){
        
         
      try{   
@@ -564,10 +569,6 @@ public class loading extends javax.swing.JFrame {
             db.ret_diretorioArquivo();
             
           double time =0;
-            while(time <=99999){
-            
-            time = time +0.2;
-            }
              login novo = new login();
              novo.setVisible(true);
              this.dispose();

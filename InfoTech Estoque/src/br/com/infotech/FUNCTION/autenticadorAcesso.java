@@ -36,11 +36,7 @@ public class autenticadorAcesso {
         return ret_valor(valor);    
     }
         
- 
-    
-  
-    
-   private  boolean  autenticLogin(int valor ){
+    private  boolean  autenticLogin(int valor ){
    
        int val = valor;
 
@@ -56,7 +52,7 @@ public class autenticadorAcesso {
        }      
    }
     
-  public boolean autencuadorDeLogin(int valor){
+    public boolean autencuadorDeLogin(int valor){
       return autenticLogin(valor);  
   } 
     
