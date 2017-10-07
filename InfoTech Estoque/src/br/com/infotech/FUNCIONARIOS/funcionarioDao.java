@@ -22,12 +22,15 @@ public class funcionarioDao {
 
    Funcionario func = new Funcionario();
   
-    
+  
+   //======================================================================================================================================================================================//   
+   //======================================================================================================================================================================================//    
+       
     public void insert(Funcionario fn){
     
         String insert =""
-                  + "execute insert_funcionario @nome=?, @Usuario=?, @senha= ?,@cpf =?,@rua=?,"
-                + "@estado=? ,@cidade=? ,@cep= ?, @0data = ?,@acrescimo = ?,@sexo = ?,@setor=?,@telefone = ?,@celular = ?,@bairro = ?, @complemento= ?, @rg =? ";
+                  + "execute insert_funcionario    @nome=?, @Usuario=?, @senha=?,@cpf =?,@rua=?, @estado=? ,@cidade=? ,@cep=?, @data =? ,@acrescimo =?,@sexo =?,"
+                                            + "@setor=?,@telefone =?,@celular =?,@bairro =?, @complemento=?,@rg=?    ;";
      
         Connection connection = conn.obterConexão();
          
@@ -61,40 +64,41 @@ public class funcionarioDao {
         }
         
         catch(SQLException err){
-            throw new RuntimeException();
+            
+            JOptionPane.showMessageDialog(null,"Ocorreu Um Erro>:900201\n"+err,"Erro",0);        
         }
         finally{
         conn.fecharConexao(connection);
         }
     }
-    
-    
+ 
+   //======================================================================================================================================================================================//   
+   //======================================================================================================================================================================================//    
+  
     public List<Funcionario> getlista(){
         String sql = "select * from select_funcionario";
         
         return ret_lista(sql);
-       }
-        
+       }        
     
     public List<Funcionario> getlista(int id){        
             
         String sql = "select * from select_funcionario where id_usaurio ="+id;   
     
         return ret_lista(sql);
-    }
-    
+    }    
         
     private List<Funcionario> ret_lista(String sql){
         
         
                  Funcionario funci = new Funcionario();
         Connection connection = conn.obterConexão();
-         
+         List <Funcionario> func = new ArrayList<Funcionario>();
         
         try
         {       
         PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
-        List <Funcionario> func = new ArrayList<Funcionario>();
+       
         func = null;
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
@@ -119,25 +123,25 @@ public class funcionarioDao {
                 return func;
         }
         catch(SQLException e){
-            throw new RuntimeException();                
             
-                }
-
-        
+            JOptionPane.showMessageDialog(null,"Ocorreu Um Erro>:900201\n"+e,"Erro",0);         
+                 return null;
+                
+            }               
         }
         
-
+   //======================================================================================================================================================================================// 
+   //======================================================================================================================================================================================//
     public void update(Funcionario fn , int id){
     
-       String update =""
-                + "execure update_funcionario @nome=?, @Usuario=?, @senha= ?,@cpf =?,@rua=?,"
-                + "@estado=? ,@cidade=? ,@cep= ?, @0data = ?,@acrescimo = ?,@sexo = ?,@setor=?,@telefone = ?,@celular = ?,@bairro = ?, @complemento= ? where id_usaurio = ? ";
+       String update ="execute update_funcionario  @rg='?',@nome='?', @Usuario='?', @senha='?',@cpf ='?',@rua='?', @estado='?' ,@cidade='?' ,@cep='?', @data ='?' ,@acrescimo = ?,@sexo = ?,@setor= ?"
+                    + ",@telefone ='?',@celular ='?',@bairro ='?', @complemento= '?', @id_usuario=? ;";
         
         Connection connection = conn.obterConexão();
          
         try
         {
-         PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(update);
+        PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(update);
                  
         stmt.setString(1,fn.getNome());
         stmt.setString(2,fn.getUsuario());
@@ -156,16 +160,15 @@ public class funcionarioDao {
         stmt.setString(15, fn.getCelular());
         stmt.setString(16, fn.getBairro());
         stmt.setString(17, fn.getComplemento());
+        stmt.setInt(18, fn.getId());
         stmt.execute();
         stmt.close();
-        
+        JOptionPane.showMessageDialog(null,"Funcionario incluido com sucesso","Concluido",3);
         }
         catch(SQLException er)
         {
-            JOptionPane.showMessageDialog(null,"Houve um erro: 098754  \n"+er,"Erro",0);
-        
-        }    
-       
+            JOptionPane.showMessageDialog(null,"Ocorreu Um Erro>:900204\n"+er,"Erro",0);              
+        }         
     }    
 
 

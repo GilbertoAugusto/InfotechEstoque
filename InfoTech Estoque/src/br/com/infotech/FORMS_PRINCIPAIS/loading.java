@@ -28,27 +28,27 @@ public class loading extends javax.swing.JFrame {
 
     
    
-    public loading() {
+  public loading() {
         initComponents();
         centralizarComponente();        
         
     }
-    public void timer(int valor){
+  
+  public void timer(int valor){
     int x=0;
     while(x<=valor){
     x++;
             }
     }
-    
-    
-  public   void conn(){
+      
+  public void conn(){
     lblApresentacao.setText("Conectando ao Servidor");
     timer(10000);
     lblApresentacao.setText("Obtendo Atualizações");
     preparingSql();    
     }
         
-  public  void centralizarComponente() {
+  public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
         setLocation((ds.width - dw.width) /3, (ds.height - dw.height) /3);
@@ -517,8 +517,8 @@ public class loading extends javax.swing.JFrame {
                 + "             insert into funcionario (nome,Usuario,		senha,		cpf,				rg) \n" +
 "				values  ('SISTEMA','User@sys','usuario','111.111.111-11','11.111.111-11')   " +
 "                               "
-                +               "insert into nivel_acesso (funcionario,autorizacao) values(1,1)  " +                             
-"                               END " +
+                +               "insert into nivel_acesso (funcionario,autorizacao) values(1,1)          " +                             
+"                               END  " +
 "				end  "
                                 + "" ;
 }

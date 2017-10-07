@@ -1,0 +1,9 @@
+----------------------Funcionario------------------------------------------------------------------------------------
+
+execute insert_funcionario @rg='',@nome='', @Usuario='', @senha='',@cpf ='',@rua='', @estado='' ,@cidade='' ,@cep='', @data ='' ,@acrescimo =,@sexo =,@setor=,@telefone ='',@celular ='',@bairro ='', @complemento= ''  ;
+
+execute update_funcionario  @rg='',@nome='', @Usuario='', @senha='',@cpf ='',@rua='', @estado='' ,@cidade='' ,@cep='', @data ='' ,@acrescimo =,@sexo =,@setor=,@telefone ='',@celular ='',@bairro ='', @complemento= '', @id_usuario= ;
+
+execute delete_funcionario @id_usuario= ;
+
+--------------------end funcionario -----------------------------------------------------------------------------

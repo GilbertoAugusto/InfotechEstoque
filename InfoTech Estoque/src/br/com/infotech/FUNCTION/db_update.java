@@ -112,7 +112,8 @@ public class db_update {
                 
         Statement stmt =  conn.createStatement();
             
-        stmt.execute("use infotech_estoque; "+ret);
+        stmt.execute("use infotech_estoque; ");
+        stmt.execute(ret);
         }
         catch(SQLException err){
         JOptionPane.showMessageDialog(null,"Houve um erro: 025484 \n Update :"+nome+" \n"+err,"Erro",0);
