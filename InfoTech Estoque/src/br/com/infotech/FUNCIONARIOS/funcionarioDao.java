@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -28,44 +29,29 @@ public class funcionarioDao {
        
     public void insert(Funcionario fn){
     
-        String insert =""
-                  + "execute insert_funcionario    @nome=?, @Usuario=?, @senha=?,@cpf =?,@rua=?, @estado=? ,@cidade=? ,@cep=?, @data =? ,@acrescimo =?,@sexo =?,"
-                                            + "@setor=?,@telefone =?,@celular =?,@bairro =?, @complemento=?,@rg=?    ;";
-     
+        String insert ="use infotech_estoque ;"
+                  + "execute insert_funcionario  @nome='"+fn.getNome()+"',  @Usuario='"+fn.getUsuario()+"', @senha='"+fn.getSenha()+"', @cpf ='"+fn.getCpf()+"', @rua='"+fn.getRua()+"', @estado='"+fn.getEstado()+"', @cidade='"+fn.getCidade()+"' ,@cep='"+fn.getCep()+"', @data ='"+fn.getData_nascimento()+"',@acrescimo ="+fn.getAcrescimo()+", @sexo =1,"
+                                            + "@setor=NULL, @telefone ='"+fn.getTelefone()+"', @celular ='"+fn.getCelular()+"', @bairro ='"+fn.getBairro()+"', @complemento='"+fn.getComplemento()+"', @rg='"+fn.getRg()+"' ;";
+      
         Connection connection = conn.obterConexão();
-         
+        
+        
         try
         {
-         PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(insert);
-                 
-        stmt.setString(1,fn.getNome());
-        stmt.setString(2,fn.getUsuario());
-        stmt.setString(3,fn.getSenha());
-        stmt.setString(4,fn.getCpf());
-        stmt.setString(5,fn.getRua());
-        stmt.setString(6,fn.getEstado());
-        stmt.setString(7,fn.getCidade());
-        stmt.setString(8,fn.getCep());
-        stmt.setString(9,fn.getData_nascimento());
-        stmt.setDouble(10, fn.getAcrescimo());
-        stmt.setInt(11,fn.getSexo());
-        stmt.setInt(12,fn.getSetor());
-        stmt.setString(13,fn.getTelefone());
-        stmt.setString(14, fn.getCelular());
-        stmt.setString(15, fn.getBairro());
-        stmt.setString(16, fn.getComplemento());
-        stmt.setString(18, fn.getRg() );
+        Statement stmt =  connection.createStatement();
+     
 
         
-        stmt.execute();
-        stmt.execute();
+        stmt.execute(insert);
+
         stmt.close();
         
+           JOptionPane.showMessageDialog(null,"Funcionario incluido com sucesso","Concluido",3);
         }
         
         catch(SQLException err){
             
-            JOptionPane.showMessageDialog(null,"Ocorreu Um Erro>:900201\n"+err,"Erro",0);        
+            JOptionPane.showMessageDialog(null,"Ocorreu Um Erro>:900209\n"+err,"Erro",0);        
         }
         finally{
         conn.fecharConexao(connection);
@@ -163,7 +149,7 @@ public class funcionarioDao {
         stmt.setInt(18, fn.getId());
         stmt.execute();
         stmt.close();
-        JOptionPane.showMessageDialog(null,"Funcionario incluido com sucesso","Concluido",3);
+        JOptionPane.showMessageDialog(null,"Funcionario Atualizado com sucesso","Concluido",3);
         }
         catch(SQLException er)
         {
